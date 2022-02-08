@@ -2,8 +2,8 @@
 // Mon Feb 20, 2017. with ROOT version 6.07/06
 //////////////////////////////////////////////////////////
 
-#ifndef TopAnalysis_h
-#define TopAnalysis_h
+#ifndef WAnalysis_h
+#define WAnalysis_h
 
 #include "TROOT.h"
 #include "TChain.h"
@@ -12,7 +12,7 @@
 #include "TH1.h"
 // Headers needed by this particular selector
 
-class TopAnalysis : public TSelector {
+class WAnalysis : public TSelector {
   public :
   TTree          *fChain;   //!pointer to the analyzed TTree or TChain
 
@@ -143,8 +143,8 @@ class TopAnalysis : public TSelector {
   TBranch        *b_jet_MV1;   //!
 
 
-  TopAnalysis(TTree * =0) : fChain(0) { }
-  virtual ~TopAnalysis() { }
+  WAnalysis(TTree * =0) : fChain(0) { }
+  virtual ~WAnalysis() { }
   virtual Int_t   Version() const { return 2; }
   virtual void    Begin(TTree *tree);
   virtual void    SlaveBegin(TTree *tree);
