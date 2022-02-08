@@ -241,7 +241,7 @@ void WAnalysis::Init(TTree *tree)
 
 }
 
-Bool_t TopAnalysis::Notify()
+Bool_t WAnalysis::Notify()
 {
   // The Notify() function is called when a new file is opened. This
   // can be either for a new TTree in a TChain or when when a new TTree
