@@ -21,17 +21,13 @@ TH1F *h_zjets;
 TH1F *h_singletop;
 TH1F *h_ttbar;
 
-//string histname = "hist_mt";
+std::string histname = "hist_mt";
 float lumi = 1000.;
 //int rebin = 20; //20 - ZmInv //4 - wmt //1 - event selection
 bool logy = true;
 std::string signalmass = "2000";
 
 void HistPlotter(){
-
-  std::string histname = "hist_mt";
-
-  std::cout << histname.c_str() << std::endl;
 
   SetAtlasStyle();
   TH1::SetDefaultSumw2(true);
@@ -148,7 +144,6 @@ void HistPlotter(){
   std::string outfile = histname.substr(0, std::string::npos);
   if(logy) can->SaveAs((outfile+"_log.pdf").c_str());
   else can->SaveAs((outfile+".pdf").c_str());
-
 }
 
 void groupSamples(){
@@ -194,7 +189,7 @@ void makeGroupHist(){
   int i = 0;
   for(std::map<TString, float>::iterator it = db.begin(); it != db.end(); ++it){
     TFile *f = TFile::Open(Form("%s.root",(it->first).Data()));
-    TH1F *h = (TH1F*) f->Get("hist_mt");
+    TH1F *h = (TH1F*) f->Get(histname.c_str());
     //h->Rebin(rebin);
     h->Scale(it->second*lumi);
     //h->Scale(it->second*lumi/h->Integral(0, h->GetNbinsX()+1));
@@ -206,7 +201,7 @@ void makeGroupHist(){
   i = 0;
   for(std::map<TString, float>::iterator it = dy.begin(); it != dy.end(); ++it){
     TFile *f = TFile::Open(Form("%s.root",(it->first).Data()));
-    TH1F *h = (TH1F*) f->Get("hist_mt");
+    TH1F *h = (TH1F*) f->Get(histname.c_str());
     //h->Rebin(rebin);
     h->Scale(it->second*lumi);
     //h->Scale(it->second*lumi/h->Integral(0, h->GetNbinsX()+1));
@@ -218,7 +213,7 @@ void makeGroupHist(){
   i = 0;
   for(std::map<TString, float>::iterator it = w.begin(); it != w.end(); ++it){
     TFile *f = TFile::Open(Form("%s.root",(it->first).Data()));
-    TH1F *h = (TH1F*) f->Get("hist_mt");
+    TH1F *h = (TH1F*) f->Get(histname.c_str());
     //h->Rebin(rebin);
     h->Scale(it->second*lumi);
     //h->Scale(it->second*lumi/h->Integral(0, h->GetNbinsX()+1));
@@ -230,7 +225,7 @@ void makeGroupHist(){
   i = 0;
   for(std::map<TString, float>::iterator it = z.begin(); it != z.end(); ++it){
     TFile *f = TFile::Open(Form("%s.root",(it->first).Data()));
-    TH1F *h = (TH1F*) f->Get("hist_mt");
+    TH1F *h = (TH1F*) f->Get(histname.c_str());
     //h->Rebin(rebin);
     h->Scale(it->second*lumi);
     //h->Scale(it->second*lumi/h->Integral(0, h->GetNbinsX()+1));
@@ -242,7 +237,7 @@ void makeGroupHist(){
   i = 0;
   for(std::map<TString, float>::iterator it = stop.begin(); it != stop.end(); ++it){
     TFile *f = TFile::Open(Form("%s.root",(it->first).Data()));
-    TH1F *h = (TH1F*) f->Get("hist_mt");
+    TH1F *h = (TH1F*) f->Get(histname.c_str());
     //h->Rebin(rebin);
     h->Scale(it->second*lumi);
     //h->Scale(it->second*lumi/h->Integral(0, h->GetNbinsX()+1));
@@ -254,7 +249,7 @@ void makeGroupHist(){
   i = 0;
   for(std::map<TString, float>::iterator it = tt.begin(); it != tt.end(); ++it){
     TFile *f = TFile::Open(Form("%s.root",(it->first).Data()));
-    TH1F *h = (TH1F*) f->Get("hist_mt");
+    TH1F *h = (TH1F*) f->Get(histname.c_str());
     //h->Rebin(rebin);
     h->Scale(it->second*lumi);
     //h->Scale(it->second*lumi/h->Integral(0, h->GetNbinsX()+1));
