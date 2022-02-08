@@ -172,7 +172,7 @@ class WAnalysis : public TSelector {
   virtual void    SlaveTerminate();
   virtual void    Terminate();
 
-  ClassDef(TopAnalysis,0);
+  ClassDef(WAnalysis,0);
 };
 
 #endif
