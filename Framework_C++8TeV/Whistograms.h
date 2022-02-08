@@ -5,7 +5,7 @@
 #include <iostream>
 // Methods
 ////////////////////////////////////////////////////////////////////////////////
-void TopAnalysis::define_histograms()
+void WAnalysis::define_histograms()
 {
   // HISTOGRAMS
   // Global histograms
@@ -35,7 +35,7 @@ void TopAnalysis::define_histograms()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-void TopAnalysis::FillOutputList()
+void WAnalysis::FillOutputList()
 {
   // histograms
 
@@ -66,7 +66,7 @@ void TopAnalysis::FillOutputList()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-void TopAnalysis::WriteHistograms()
+void WAnalysis::WriteHistograms()
 {
   // histograms
 
@@ -96,7 +96,7 @@ void TopAnalysis::WriteHistograms()
   hist_leadjet_MV1->Write();
 }
 
-void TopAnalysis::FillHistogramsGlobal( double m, float w , TString s)
+void WAnalysis::FillHistogramsGlobal( double m, float w , TString s)
 {
   //Fill Global histograms
   if (s.Contains("hist_vismass")) hist_vismass->Fill(m,w);
@@ -111,7 +111,7 @@ void TopAnalysis::FillHistogramsGlobal( double m, float w , TString s)
 
 }
 
-void TopAnalysis::FillHistogramsLeadlept( double m, float w , TString s)
+void WAnalysis::FillHistogramsLeadlept( double m, float w , TString s)
 {
   //Leading lepton histograms
   if (s.Contains("hist_leadleptpt")) hist_leadleptpt->Fill(m,w);
@@ -136,7 +136,7 @@ void TopAnalysis::FillHistogramsLeadlept( double m, float w , TString s)
 }
 
 
-void TopAnalysis::FillHistogramsLeadJet( double m, float w , TString s)
+void WAnalysis::FillHistogramsLeadJet( double m, float w , TString s)
 {
   //Leading Jet histograms
   if (s.Contains("hist_n_jets")) hist_n_jets->Fill(m,w);

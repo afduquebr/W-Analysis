@@ -1,4 +1,4 @@
-#define TopAnalysis_cxx
+#define WAnalysis_cxx
 // The following methods are defined in this file:
 //    Begin():        called every time a loop on the tree starts,
 //                    a convenient place to create your histograms.
@@ -11,8 +11,8 @@
 //    Terminate():    called at the end of the loop on the tree,
 //                    a convenient place to draw/fit your histograms.
 
-#include "TopAnalysis.h"
-#include "Tophistograms.h"
+#include "WAnalysis.h"
+#include "Whistograms.h"
 #include <iostream>
 #include <cstring>
 #include <string>
@@ -25,14 +25,14 @@
 
 string name;
 
-void TopAnalysis::Begin(TTree * )
+void WAnalysis::Begin(TTree * )
 {
   // The Begin() function is called at the start of the query.
   // When running with PROOF Begin() is only called on the client.
   // The tree argument is deprecated (on PROOF 0 is passed).
 }
 
-void TopAnalysis::SlaveBegin(TTree * )
+void WAnalysis::SlaveBegin(TTree * )
 {
   // The SlaveBegin() function is called after the Begin() function.
   // When running with PROOF SlaveBegin() is called on each slave server.
@@ -48,7 +48,7 @@ void TopAnalysis::SlaveBegin(TTree * )
   FillOutputList();
 }
 
-Bool_t TopAnalysis::Process(Long64_t entry)
+Bool_t WAnalysis::Process(Long64_t entry)
 {
   // The Process() function is called for each entry in the tree (or possibly
   // keyed object in the case of PROOF) to be processed. The entry argument
@@ -240,26 +240,26 @@ Bool_t TopAnalysis::Process(Long64_t entry)
   return kTRUE;
 }
 
-void TopAnalysis::SlaveTerminate()
+void WAnalysis::SlaveTerminate()
 {
   // The SlaveTerminate() function is called after all entries or objects
   // have been processed. When running with PROOF SlaveTerminate() is called
   // on each slave server.
 }
 
-void TopAnalysis::Terminate()
+void WAnalysis::Terminate()
 {
   // The Terminate() function is the last function to be called during
   // a query. It always runs on the client, it can be used to present
   // the results graphically or save the results to file.
 
-  name="output_Top/"+name+".root";
+  name="output/"+name+".root";
 
   const char* filename = name.c_str();
 
-  TFile physicsoutput_Top(filename,"recreate");
+  TFile physicsoutput_W(filename,"recreate");
   WriteHistograms();
-  physicsoutput_Top.Close();
+  physicsoutput_W.Close();
 
 
 }

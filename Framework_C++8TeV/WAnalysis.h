@@ -177,8 +177,8 @@ class WAnalysis : public TSelector {
 
 #endif
 
-#ifdef TopAnalysis_cxx
-void TopAnalysis::Init(TTree *tree)
+#ifdef WAnalysis_cxx
+void WAnalysis::Init(TTree *tree)
 {
   // The Init() function is called when the selector needs to initialize
   // a new tree or chain. Typically here the reader is initialized.
@@ -252,4 +252,4 @@ Bool_t TopAnalysis::Notify()
   return kTRUE;
 }
 
-#endif // #ifdef TopAnalysis_cxx
+#endif // #ifdef WAnalysis_cxx
