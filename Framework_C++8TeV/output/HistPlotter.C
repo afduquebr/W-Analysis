@@ -94,7 +94,33 @@ void HistPlotter(){
   //double chi2_test = h_data->Chi2Test(h_err, "UW,P");
   //cout<<"chi2_test  "<<chi2_test<<endl;
 
+  std::ostringstream DataEntries;
+  DataEntries << setprecision (5) << h_data->Integral(0,h_data->GetNbinsX()+1);
+  std::string DataEntriesString = DataEntries.str();
 
+  std::ostringstream TTBarEntries;
+  TTBarEntries << setprecision (5) << h_ttbar->Integral(0,h_ttbar->GetNbinsX()+1);
+  std::string TTBarEntriesString = TTBarEntries.str();
+
+  std::ostringstream SingleTopEntries;
+  SingleTopEntries << setprecision (5) << h_singletop->Integral(0,h_singletop->GetNbinsX()+1);
+  std::string SingleTopEntriesString = SingleTopEntries.str();
+
+  std::ostringstream ZJetsEntries;
+  ZJetsEntries << setprecision (5) << h_zjets->Integral(0,h_zjets->GetNbinsX()+1);
+  std::string ZJetsEntriesString = ZJetsEntries.str();
+
+  std::ostringstream WJetsEntries;
+  WJetsEntries << setprecision (5) << h_wjets->Integral(0,h_wjets->GetNbinsX()+1);
+  std::string WJetsEntriesString = WJetsEntries.str();
+
+  std::ostringstream DrellYanEntries;
+  DrellYanEntries << setprecision (5) << h_drellyan->Integral(0,h_drellyan->GetNbinsX()+1);
+  std::string DrellYanEntriesString = DrellYanEntries.str();
+
+  std::ostringstream DbEntries;
+  DbEntries << setprecision (5) << h_db->Integral(0,h_db->GetNbinsX()+1);
+  std::string DbEntriesString = DbEntries.str();
 
   ///// Plotting
   TCanvas *can = new TCanvas("can","", 600, 600);
@@ -130,13 +156,13 @@ void HistPlotter(){
   leg->SetFillColor(0);
   leg->SetFillStyle(1001);
   leg->SetHeader("     #sqrt{s} = 8 TeV, 1 fb^{-1}");
-  leg->AddEntry(h_data,"Data","p");
-  leg->AddEntry(h_ttbar,"t#bar{t}","f");
-  leg->AddEntry(h_singletop,"Single top","f");
-  leg->AddEntry(h_zjets,"Z","f");
-  leg->AddEntry(h_wjets,"W","f");
-  leg->AddEntry(h_drellyan,"Drell-Yan","f");
-  leg->AddEntry(h_db,"Diboson","f");
+  leg->AddEntry(h_data,("Data:" + DataEntriesString).c_str(),"p");
+  leg->AddEntry(h_ttbar,("t#bar{t}:" + TTBarEntriesString).c_str(),"f");
+  leg->AddEntry(h_singletop,("Single top:"+ SingleTopEntriesString).c_str(),"f");
+  leg->AddEntry(h_zjets,("Z:" + ZJetsEntriesString).c_str(),"f");
+  leg->AddEntry(h_wjets,("W:" + WJetsEntriesString).c_str(),"f");
+  leg->AddEntry(h_drellyan,("Drell-Yan:" + DrellYanEntriesString).c_str(),"f");
+  leg->AddEntry(h_db,("Diboson:" + DbEntriesString).c_str(),"f");
   leg->AddEntry(h_err,"MC stat. uncertainty","f");
   // leg->AddEntry(h_signal,("Z'(" + signalmass + " GeV)#rightarrow t#bar{t} x 10^{3}").c_str(),"l");
   leg->Draw();
