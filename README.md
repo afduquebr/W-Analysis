@@ -58,7 +58,7 @@ variables:
 Por otro lado, se obtuvieron las entradas para cada uno de los procesos en los datos después de realizar los cortes necesarios para obtener un solo buen leptón.
 
   * W Decay: 5.8255 x 10^6 
-  * ttbar production: 38423
+  * ttbar Production: 38423
   * Single Top Quark: 10324
   * Z Decay: 2.1593 x 10^5
   * Drell-Yan Process: 12371
